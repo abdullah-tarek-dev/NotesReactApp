@@ -1,0 +1,83 @@
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* خلفية شفافة */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  width: 400px;
+  max-width: 90%;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+/* عنوان الملاحظة */
+.title_details {
+  font-family: 'Courier New', Courier, monospace;
+  text-decoration: none;
+}
+
+/* محتوى الملاحظة */
+.content_details {
+  font-family: sans-serif;
+  font-size: 14px;
+  color: #333;
+  text-align: left;
+  line-height: 1.5;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  padding: 10px;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+  text-decoration: none;
+  margin-top: 10px;
+}
+
+.modal-actions {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.modal-actions button {
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.close-button {
+  margin-top: 15px;
+  background-color: #fa8279; /* لون أحمر */
+  color: white;
+  font-size: 16px;
+  padding: 7px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.close-button:hover {
+  background-color: #f44336; /* لون أحمر أغمق */
+  color: white;
+}
+
+/* مدخلات التعديل */
+.title_input,
+.content_input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  font-size: 14px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}

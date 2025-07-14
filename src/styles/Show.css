@@ -1,0 +1,97 @@
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.show_container{
+  margin: 20px 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; 
+  height: 70%; 
+}
+.show_container .pinned ,.show_container .today {
+    width:100%;
+    height:60%;;
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #f0f0f0;
+    border-radius: 5px;
+    box-shadow: 0 0px 2px rgba(0,0,0,0.1);
+    
+}
+.show_container .pinned h2 ,.show_container .today h2 {
+    margin: 0 0 10px;
+    font-size: 18px;
+    color: #1c5258;
+    font-family: 'MyDottedFont', sans-serif;
+    font-weight: 500;
+    text-align: left;
+    text-decoration: none;
+    padding-top:10px;
+}
+
+.pinned_class,
+.today_class {
+  display: flex;
+  gap: 10px;
+  height: 90%;
+  width: 100%;
+  padding: 10px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+}
+
+/* Scrollbar Styling */
+.pinned_class::-webkit-scrollbar,
+.today_class::-webkit-scrollbar {
+  height: 6px;
+}
+.pinned_class::-webkit-scrollbar-thumb,
+.today_class::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 5px;
+}
+
+.footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 10%;
+    background-color: #f0f0f0;
+    border-radius: 5px;
+}
+.footer .add,.footer .Home{
+    padding: 10px 20px;
+    color: #1c5258;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+     margin-right:30px;
+    margin-top:40px; 
+    background-color: #e0e0e0;
+    transition: background-color 0.3s, color 0.3s;
+}
+.footer .add:hover , .footer .Home:hover {
+    background-color: #1c5258;
+    color: white;
+}
+
+
+.card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  transition: transform 0.2s ease;
+}
+
+.card-link:hover {
+  transform: scale(1.02);
+}
+
+.show_card_style p{
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

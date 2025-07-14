@@ -1,0 +1,29 @@
+/* src/components/NoteCard.css */
+.note-card {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 10px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  width:100%;
+  height:auto;
+  cursor: pointer;
+}
+.note-card h3 {
+  margin: 0 0 5px;
+  font-size: 16px;
+}
+.note-card p {
+  margin: 0;
+  color: #555;
+  font-size: 14px;
+
+}
+.note-date {
+  display: block;
+  margin-top: 10px;
+  font-size: 0.8em;
+  color: gray;
+}
+

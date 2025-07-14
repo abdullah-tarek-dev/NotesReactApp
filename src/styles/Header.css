@@ -1,0 +1,94 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+@font-face {
+  font-family: 'MyDottedFont';
+  src: url('../fonts/DOTFONT-.TTF') format('truetype');
+}
+
+header{
+display:flex;
+justify-content: space-between;
+align-items: center;
+padding: 10px 20px;
+background-color: #f0f0f0;
+box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+border-bottom: 1px solid #ccc;
+
+}
+.header-title{
+  font-family: 'MyDottedFont', sans-serif;
+    font-size: 1.6rem;
+    color: rgba(0, 0, 0, 0.7);
+    font-weight: 500;
+}
+.header-details{
+display: flex;
+gap: 10px;
+}
+.header-details button{
+    background-color: #042027;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+.header-details button:hover{
+    background-color: #03038a;
+}
+.header-details button:active{
+    background-color: #02025a;
+}
+.header-details button:focus{
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(2, 2, 90, 0.5);
+}
+.header-details button:disabled{
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+.search-input {
+  margin-top: 10px;
+  padding: 8px;
+  width: 80%;
+  max-width: 300px;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  position:fixed;
+  z-index: 10000;
+}
+
+.dropdown-menu {
+  list-style: none;
+  background-color: #fff;
+  color: #3b5058;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 0.5rem 0;
+  position: absolute;
+  right: 230px;
+  top: 85px;
+  width: 150px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  z-index: 999;
+}
+
+.dropdown-menu li  {
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
+
+.li{
+  font-size: 1rem;
+  color: #3b5058;
+  text-decoration: none;
+}
+
+.dropdown-menu li:hover {
+  background-color: #f0f0f0;
+}
