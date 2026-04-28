@@ -1,94 +1,168 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=DM+Sans:wght@300;400;500&display=swap');
+
 @font-face {
   font-family: 'MyDottedFont';
   src: url('../fonts/DOTFONT-.TTF') format('truetype');
 }
 
-header{
-display:flex;
-justify-content: space-between;
-align-items: center;
-padding: 10px 20px;
-background-color: #f0f0f0;
-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-border-bottom: 1px solid #ccc;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
+/* ── Header Bar ─────────────────────────────────── */
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 28px;
+  background: white;
+  box-shadow: 0 2px 16px rgba(13, 115, 119, 0.08);
+  border-bottom: 1.5px solid #c9d8da;
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
-.header-title{
-  font-family: 'MyDottedFont', sans-serif;
-    font-size: 1.6rem;
-    color: rgba(0, 0, 0, 0.7);
-    font-weight: 500;
+
+.header-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem;
+  color: #1a2e35;
+  font-weight: 700;
+  letter-spacing: 0.12em;
 }
-.header-details{
-display: flex;
-gap: 10px;
+
+.header-details {
+  display: flex;
+  gap: 8px;
 }
-.header-details button{
-    background-color: #042027;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1rem;
+
+.header-details button {
+  background: #1a2e35;
+  color: white;
+  border: none;
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease, transform 0.15s ease;
 }
-.header-details button:hover{
-    background-color: #03038a;
+
+.header-details button:hover {
+  background: #0d7377;
+  transform: translateY(-1px);
 }
-.header-details button:active{
-    background-color: #02025a;
+
+.header-details button:active {
+  transform: translateY(0);
 }
-.header-details button:focus{
-    outline: none;
-    box-shadow: 0 0 0 2px rgba(2, 2, 90, 0.5);
+
+.header-details button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(13, 115, 119, 0.25);
 }
-.header-details button:disabled{
-    background-color: #ccc;
-    cursor: not-allowed;
+
+/* ── Search Bar ─────────────────────────────────── */
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: white;
+  border-bottom: 1.5px solid #c9d8da;
+  padding: 10px 28px;
+  box-shadow: 0 4px 12px rgba(13, 115, 119, 0.07);
+  animation: slideDown 0.2s ease;
 }
-.search-input {
-  margin-top: 10px;
-  padding: 8px;
-  width: 80%;
-  max-width: 300px;
-  font-size: 1rem;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-  position:fixed;
-  z-index: 10000;
+
+.search-icon {
+  color: #3d5a63;
+  font-size: 0.9rem;
+  flex-shrink: 0;
 }
+
+.search-bar input {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.95rem;
+  color: #1a2e35;
+  background: transparent;
+}
+
+.search-bar input::placeholder {
+  color: #a8b8bb;
+  font-weight: 300;
+}
+
+.clear-search {
+  background: none;
+  border: none;
+  color: #a8b8bb;
+  cursor: pointer;
+  font-size: 0.85rem;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  transition: color 0.2s;
+}
+
+.clear-search:hover {
+  color: #0d7377;
+}
+
+/* ── Dropdown Menu ──────────────────────────────── */
 
 .dropdown-menu {
   list-style: none;
-  background-color: #fff;
-  color: #3b5058;
-  border: 1px solid #ddd;
-  border-radius: 6px;
-  padding: 0.5rem 0;
+  background: white;
+  border: 1.5px solid #c9d8da;
+  border-radius: 12px;
+  padding: 6px 0;
   position: absolute;
-  right: 230px;
-  top: 85px;
-  width: 150px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  right: 20px;
+  top: 68px;
+  width: 160px;
+  box-shadow: 0 8px 28px rgba(13, 115, 119, 0.12);
   z-index: 999;
+  animation: fadeIn 0.15s ease;
 }
 
-.dropdown-menu li  {
-  padding: 0.5rem 1rem;
+.dropdown-menu li {
+  padding: 10px 16px;
   cursor: pointer;
-}
-
-.li{
-  font-size: 1rem;
-  color: #3b5058;
-  text-decoration: none;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.9rem;
+  color: #3d5a63;
+  transition: background 0.15s ease, color 0.15s ease;
 }
 
 .dropdown-menu li:hover {
-  background-color: #f0f0f0;
+  background: #f0fafa;
+  color: #0d7377;
+}
+
+.dropdown-menu li a {
+  color: inherit;
+  text-decoration: none;
+  display: block;
+}
+
+/* ── Animations ─────────────────────────────────── */
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-4px); }
+  to   { opacity: 1; transform: translateY(0); }
 }

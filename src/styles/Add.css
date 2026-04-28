@@ -1,86 +1,230 @@
-.add_container
-{
-width:100%;
-height:100%;
-    /* background-color: aqua; */
-}
-h2{
-    text-align: center;
-    color: rgb(16, 58, 66);
-   font-family: 'MyDottedFont', sans-serif;
-    font-size: 2rem;
-    font-weight: lighter;
-    padding-top: 20px;
-    margin-bottom: 20px;
-    text-decoration: underline;
-}
-form{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
-    padding: 20px;
-    background-color: white;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 80%;
-    height:65%;
-    margin:60px auto;
-    max-width: 600px;
-    font-family: 'MyDottedFont', sans-serif;
-    font-size: 1.2rem;
-    color: rgb(16, 58, 66);
-    border: 2px solid rgb(16, 58, 66);
-    transition: all 0.3s ease;
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap');
 
-}
-input[type="text"] , textarea{
-    width: 100%;
-    padding: 10px;
-    border: 2px solid rgb(16, 58, 66);
-    border-radius: 5px;
-    font-size: 1rem;
-    color: rgb(16, 58, 66);
-    transition: border-color 0.3s ease;
-}
-input[type="text"]:focus , textarea:focus{
-    border-color: rgb(0, 123, 255);
-    outline: none;
-}
-textarea{
-    height: 100px;
+:root {
+  --ink:     #1a2e35;
+  --ink-mid: #3d5a63;
+  --teal:    #0d7377;
+  --teal-lt: #14a098;
+  --cream:   #faf8f3;
+  --sand:    #f0ebe0;
+  --border:  #c9d8da;
+  --success: #2d7a50;
+  --error:   #b84444;
+  --shadow:  0 8px 32px rgba(13, 115, 119, 0.12);
+  --radius:  16px;
 }
 
-button{
-    padding: 10px 20px;
-    background-color: rgb(16, 58, 66);
-    color: white;
-    border-radius: 5px;
-    font-size: 1rem;
-    cursor: pointer;
-     border: 2px solid rgb(16, 58, 66);
-    transition: background-color 0.3s ease;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
-button:hover{
-    background-color: white;
-    color: rgb(16, 58, 66);
+
+body {
+  background: var(--cream);
+  font-family: 'DM Sans', sans-serif;
 }
-button:disabled{
-    background-color: grey;
-    cursor: not-allowed;
+
+.add_container {
+  min-height: 100vh;
+  background:
+    radial-gradient(ellipse at 10% 0%, rgba(13,115,119,0.08) 0%, transparent 55%),
+    radial-gradient(ellipse at 90% 100%, rgba(13,115,119,0.06) 0%, transparent 50%),
+    var(--cream);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 20px 60px;
 }
+
+.add_header {
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 32px;
+}
+
+.back_btn {
+  align-self: flex-start;
+  background: none;
+  border: none;
+  color: var(--ink-mid);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.9rem;
+  cursor: pointer;
+  padding: 6px 0;
+  margin-bottom: 12px;
+  transition: color 0.2s;
+  letter-spacing: 0.02em;
+}
+
+.back_btn:hover {
+  color: var(--teal);
+  background: none;
+}
+
+.add_header h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.4rem;
+  font-weight: 600;
+  color: var(--ink);
+  text-align: left;
+  text-decoration: none;
+  line-height: 1.1;
+}
+
+.subtitle {
+  font-size: 0.9rem;
+  color: var(--ink-mid);
+  font-weight: 300;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+form {
+  width: 100%;
+  max-width: 600px;
+  background: white;
+  border-radius: var(--radius);
+  padding: 36px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+  transition: box-shadow 0.3s ease;
+}
+
+form:focus-within {
+  box-shadow: 0 12px 48px rgba(13, 115, 119, 0.18);
+}
+
+.field_group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  position: relative;
+}
+
+label {
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-mid);
+}
+
+input[type="text"],
+textarea {
+  width: 100%;
+  padding: 14px 16px;
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1rem;
+  color: var(--ink);
+  background: var(--cream);
+  transition: border-color 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
+  resize: none;
+}
+
+input[type="text"]::placeholder,
+textarea::placeholder {
+  color: #a8b8bb;
+  font-weight: 300;
+}
+
+input[type="text"]:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--teal);
+  background: white;
+  box-shadow: 0 0 0 3px rgba(13, 115, 119, 0.1);
+}
+
+textarea {
+  height: 160px;
+  line-height: 1.7;
+}
+
+.char_hint {
+  font-size: 0.75rem;
+  color: #a8b8bb;
+  text-align: right;
+  font-weight: 300;
+}
+
+.feedback_msg {
+  font-size: 0.9rem;
+  font-weight: 400;
+  padding: 10px 14px;
+  border-radius: 8px;
+  animation: fadeSlide 0.3s ease;
+}
+
+.error_msg {
+  background: #fdf0f0;
+  color: var(--error);
+  border: 1px solid #f0c8c8;
+}
+
+.success_msg {
+  background: #eef7f2;
+  color: var(--success);
+  border: 1px solid #b8deca;
+}
+
+@keyframes fadeSlide {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.submit_btn {
+  align-self: flex-end;
+  padding: 14px 32px;
+  background: var(--teal);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  letter-spacing: 0.03em;
+  transition: background 0.25s ease, transform 0.15s ease, box-shadow 0.25s ease;
+  box-shadow: 0 4px 14px rgba(13, 115, 119, 0.3);
+}
+
+.submit_btn:hover:not(:disabled) {
+  background: var(--teal-lt);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(13, 115, 119, 0.4);
+}
+
+.submit_btn:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.submit_btn:disabled {
+  background: var(--border);
+  color: var(--ink-mid);
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
 @media (max-width: 600px) {
-    form {
-        width: 90%;
-    }
-    h2 {
-        font-size: 1.5rem;
-    }
-    input[type="text"], textarea {
-        font-size: 0.9rem;
-    }
-    button {
-        font-size: 0.9rem;
-    }
+  form {
+    padding: 28px 24px;
+  }
+
+  .add_header h2 {
+    font-size: 1.9rem;
+  }
+
+  .submit_btn {
+    align-self: stretch;
+    text-align: center;
+  }
 }

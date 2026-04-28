@@ -1,60 +1,86 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../styles/Add.css';
 
-const Add = () => {
+const Add = ({ notes, setNotes }) => {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
-  const [notes, setNotes] = useState(() => {
-    const savedNotes = localStorage.getItem('notes');
-    return savedNotes ? JSON.parse(savedNotes) : [];
-  });
-  const navigate = useNavigate(); 
-
-  useEffect(() => {
-    localStorage.setItem('notes', JSON.stringify(notes));
-  }, [notes]);
+  const [feedback, setFeedback] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (title && content) {
-      const newNote = {
-        id: Date.now(), // unique ID
-        title,
-        content,
-          pinned: false,
-  date: new Date()
-      };
-
-      setNotes([...notes, newNote]); // add to state
-      setTitle('');
-      setContent('');
-      alert(`Note added: ${title}`);
- navigate('/');
-    } else {
-      alert('Please fill in both fields');
+    if (!title.trim() || !content.trim()) {
+      setFeedback('error');
+      setTimeout(() => setFeedback(''), 2000);
+      return;
     }
+
+    setIsSubmitting(true);
+
+    const newNote = {
+      id: Date.now(),
+      title: title.trim(),
+      content: content.trim(),
+      pinned: false,
+      date: new Date().toISOString(),
+    };
+
+    setNotes((prev) => [...prev, newNote]);
+    setFeedback('success');
+
+    setTimeout(() => {
+      navigate('/');
+    }, 800);
   };
 
   return (
     <div className="add_container">
-      <h2>New Note</h2>
+      <div className="add_header">
+        <button className="back_btn" onClick={() => navigate('/')}>
+          ← Back
+        </button>
+        <h2>New Note</h2>
+        <span className="subtitle">Capture your thoughts</span>
+      </div>
+
       <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="Enter your Title"
-          onChange={(e) => setTitle(e.target.value)}
-          value={title}
-          required
-        />
-        <textarea
-          placeholder="Enter your Note"
-          onChange={(e) => setContent(e.target.value)}
-          value={content}
-          required
-        />
-        <button type="submit">Add Note</button>
+        <div className="field_group">
+          <label htmlFor="title">Title</label>
+          <input
+            id="title"
+            type="text"
+            placeholder="What's this note about?"
+            onChange={(e) => setTitle(e.target.value)}
+            value={title}
+            maxLength={80}
+          />
+          <span className="char_hint">{title.length}/80</span>
+        </div>
+
+        <div className="field_group">
+          <label htmlFor="content">Content</label>
+          <textarea
+            id="content"
+            placeholder="Write your thoughts here..."
+            onChange={(e) => setContent(e.target.value)}
+            value={content}
+          />
+          <span className="char_hint">{content.length} characters</span>
+        </div>
+
+        {feedback === 'error' && (
+          <p className="feedback_msg error_msg">⚠ Please fill in both fields.</p>
+        )}
+        {feedback === 'success' && (
+          <p className="feedback_msg success_msg">✓ Note saved! Redirecting...</p>
+        )}
+
+        <button type="submit" disabled={isSubmitting} className="submit_btn">
+          {isSubmitting ? 'Saving...' : '+ Add Note'}
+        </button>
       </form>
     </div>
   );

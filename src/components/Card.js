@@ -1,21 +1,23 @@
 import React from 'react';
 import '../styles/Card.css';
 
-const Card = ({ title, content ,date , className = '' }) => {
-const formattedDate = new Date(date).toLocaleString('en-GB', {
-  day: '2-digit',
-  month: 'short',
-  year: 'numeric',
-  hour: '2-digit',
-  minute: '2-digit'
-});
+const Card = ({ title, content, date, pinned, className = '' }) => {
+  const formattedDate = new Date(date).toLocaleString('en-GB', {
+    day: '2-digit',
+    month: 'short',
+    year: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit',
+  });
 
-  
   return (
     <div className={`note-card ${className}`}>
-      <h3>{title}</h3>
+      <div className="card-header">
+        <h3>{title}</h3>
+        {pinned && <span className="pin-badge">📌</span>}
+      </div>
       <p>{content}</p>
-            <small className="note-date">Created on: {formattedDate}</small>
+      <small className="note-date">Created on: {formattedDate}</small>
     </div>
   );
 };
